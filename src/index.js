@@ -1,32 +1,31 @@
 function updateTime() {
-  let losAngelesElement = document.querySelector("#los-angeles");
-  if (losAngelesElement) {
-    let losAngelesDateElement = losAngelesElement.querySelector(".date");
-    let losAngelesTimeElement = losAngelesElement.querySelector(".time");
-    let losAngelesTime = moment().tz("America/Los_Angeles");
+  const cities = [
+    {
+      id: "los-angeles",
+      timeZone: "America/Los_Angeles",
+      name: "Los Angeles 🇺🇸",
+    },
+    { id: "paris", timeZone: "Europe/Paris", name: "Paris 🇫🇷" },
+    { id: "sydney", timeZone: "Australia/Sydney", name: "Sydney 🇦🇺" },
+    { id: "dubai", timeZone: "Asia/Dubai", name: "Dubai 🇦🇪" },
+  ];
 
-    losAngelesDateElement.innerHTML = losAngelesTime.format("MMMM Do YYYY");
-    losAngelesTimeElement.innerHTML = losAngelesTime.format(
-      "h:mm:ss [<small>]A[</small>]"
-    );
-  }
+  cities.forEach((city) => {
+    let cityElement = document.querySelector(`#${city.id}`);
+    if (cityElement) {
+      let dateElement = cityElement.querySelector(".date");
+      let timeElement = cityElement.querySelector(".time");
+      let cityTime = moment().tz(city.timeZone);
 
-  let parisElement = document.querySelector("#paris");
-  if (parisElement) {
-    let parisDateElement = parisElement.querySelector(".date");
-    let parisTimeElement = parisElement.querySelector(".time");
-    let parisTime = moment().tz("Europe/Paris");
-
-    parisDateElement.innerHTML = parisTime.format("MMMM Do YYYY");
-    parisTimeElement.innerHTML = parisTime.format(
-      "h:mm:ss [<small>]A[</small>]"
-    );
-  }
+      dateElement.innerHTML = cityTime.format("MMMM Do YYYY");
+      timeElement.innerHTML = cityTime.format("h:mm:ss [<small>]A[</small>]");
+    }
+  });
 }
 
 function updateCity(event) {
   let cityTimeZone = event.target.value;
-  if (!cityTimeZone) return; // Prevent clearing when default is selected
+  if (!cityTimeZone) return;
 
   if (cityTimeZone === "current") {
     cityTimeZone = moment.tz.guess();
@@ -36,20 +35,18 @@ function updateCity(event) {
   let cityTime = moment().tz(cityTimeZone);
   let citiesElement = document.querySelector("#cities");
 
-  // Instead of replacing all cities, update only a selected city display
   citiesElement.innerHTML = `
-  <div class="city">
-    <div>
-      <h2>${cityName}</h2>
-      <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
-    </div>
-    <div class="time">${cityTime.format("h:mm:ss")} <small>${cityTime.format(
+    <div class="city">
+      <div>
+        <h2>${cityName}</h2>
+        <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
+      </div>
+      <div class="time">${cityTime.format("h:mm:ss")} <small>${cityTime.format(
     "A"
   )}</small></div>
-  </div>
+    </div>
   `;
 
-  // Keep updating selected city’s time every second
   setInterval(() => {
     let newTime = moment().tz(cityTimeZone);
     document.querySelector(".date").innerHTML = newTime.format("MMMM Do YYYY");
@@ -59,7 +56,6 @@ function updateCity(event) {
   }, 1000);
 }
 
-// Ensure the script runs after the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", function () {
   updateTime();
   setInterval(updateTime, 1000);
