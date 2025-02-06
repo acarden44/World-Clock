@@ -39,7 +39,7 @@ select {
 .city {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: left;
   background: #f9f7fe;
   padding: 15px;
   margin: 10px 0;
@@ -50,11 +50,13 @@ select {
 .city h2 {
   font-size: 22px;
   color: #222;
+  text-align: left;
 }
 
 .date {
   font-size: 16px;
   opacity: 0.7;
+  text-align: left;
 }
 
 .time {
@@ -65,6 +67,30 @@ select {
 .time small {
   font-size: 18px;
   vertical-align: middle;
+}
+#all-cities-link {
+  display: none;
+}
+#refresh-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+#refresh-button:hover {
+  background-color: #45a049;
+}
+
+#refresh-button:focus {
+  outline: none;
 }
 
 footer {

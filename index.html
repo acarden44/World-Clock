@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="src/style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.40/moment-timezone-with-data.min.js"></script>
-    <title>World Clock App</title>
+
+    <title>🌎 World Clock App ⏰</title>
   </head>
   <body>
     <div class="container">
@@ -14,18 +15,23 @@
 
       <select id="city">
         <option value="">Select a city...</option>
-        <option value="Europe/London">London</option>
-        <option value="America/New_York">New York</option>
-        <option value="Pacific/Auckland">Auckland</option>
-        <option value="America/Panama">Panama</option>
-        <option value="America/Santo_Domingo">Dominican Republic</option>
-        <option value="Asia/Tokyo">Tokyo</option>
-        <option value="Australia/Sydney">Sydney</option>
-        <option value="Asia/Dubai">Dubai</option>
+        <option value="Pacific/Auckland">Auckland 🇳🇿</option>
+        <option value="Europe/London">London 🇬🇧</option>
+        <option value="America/New_York">New York 🇺🇸</option>
+        <option value="Australia/Sydney">Sydney 🇦🇺</option>
+        <option value="Asia/Tokyo">Tokyo 🗼</option>
         <option value="current">My Current Location</option>
       </select>
 
       <div id="cities">
+        <div class="city" id="dominican-republic">
+          <div>
+            <h2>Dominican Republic 🇩🇴</h2>
+            <div class="date"></div>
+          </div>
+          <div class="time"></div>
+        </div>
+
         <div class="city" id="los-angeles">
           <div>
             <h2>Los Angeles 🇺🇸</h2>
@@ -33,6 +39,15 @@
           </div>
           <div class="time"></div>
         </div>
+
+        <div class="city" id="panama">
+          <div>
+            <h2>Panama 🇵🇦</h2>
+            <div class="date"></div>
+          </div>
+          <div class="time"></div>
+        </div>
+
         <div class="city" id="paris">
           <div>
             <h2>Paris 🇫🇷</h2>
@@ -40,23 +55,9 @@
           </div>
           <div class="time"></div>
         </div>
-        <div class="city" id="sydney">
-          <div>
-            <h2>Sydney 🇦🇺</h2>
-            <div class="date"></div>
-          </div>
-          <div class="time"></div>
-        </div>
-        <div class="city" id="dubai">
-          <div>
-            <h2>Dubai 🇦🇪</h2>
-            <div class="date"></div>
-          </div>
-          <div class="time"></div>
-        </div>
       </div>
 
-      <a href="index.html">All Cities</a>
+      <button id="refresh-button" style="display: none">All Cities</button>
     </div>
 
     <footer>
